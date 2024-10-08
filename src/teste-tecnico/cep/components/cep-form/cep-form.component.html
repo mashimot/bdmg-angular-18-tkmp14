@@ -1,0 +1,143 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="5px grid">
+        <mat-form-field
+            *ngIf="cep as field"
+            fxFlex="20"
+            fxFlex.xs="100"
+        >
+            <mat-label>Cep</mat-label>
+            <input 
+                matInput 
+                [formControlName]="'cep'" 
+                cep 
+                (cepChange)="onCepChange($event)"
+                mask="00000-000"
+            >
+            <mat-error *ngIf="isFieldInvalid(field) && field.hasError('required')"> is required</mat-error>
+            <mat-error *ngIf="isFieldInvalid(field) && field.hasError('requiredMask')"> XXXXX-XXX</mat-error>
+            <mat-error *ngIf="isFieldInvalid(field) && field.hasError('apiCep')">{{ cep.errors?.['apiCep'] }}</mat-error>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="5px grid">
+        <mat-form-field 
+            *ngIf="logradouro as field"
+            fxFlex="20"
+            fxFlex.xs="100"
+        >
+            <mat-label>Logradouro</mat-label>
+            <input matInput [formControlName]="'logradouro'">
+            <mat-error *ngIf="isFieldInvalid(field) && field.hasError('required')"> is required</mat-error>
+        </mat-form-field>
+        <mat-form-field
+            *ngIf="complemento as field"
+            fxFlex="20"
+            fxFlex.xs="100"
+        >
+            <mat-label>Complemento</mat-label>
+            <input matInput [formControlName]="'complemento'">
+            <mat-error *ngIf="isFieldInvalid(field) && field.hasError('required')"> is required</mat-error>
+        </mat-form-field>
+        <mat-form-field *ngIf="bairro as field"
+            fxFlex="20"
+            fxFlex.xs="100"
+        >
+            <mat-label>Bairro</mat-label>
+            <input matInput [formControlName]="'bairro'">
+            <mat-error *ngIf="isFieldInvalid(field) && field.hasError('required')"> is required</mat-error>
+        </mat-form-field>
+        <mat-form-field
+            *ngIf="localidade as field"
+            fxFlex="20"
+            fxFlex.xs="100"
+        >
+            <mat-label>Localidade</mat-label>
+            <input matInput [formControlName]="'localidade'">
+            <mat-error *ngIf="isFieldInvalid(field) && field.hasError('required')"> is required</mat-error>
+        </mat-form-field>
+        <mat-form-field
+            *ngIf="uf as field"
+            fxFlex="20"
+            fxFlex.xs="100"
+        >
+            <mat-label>UF</mat-label>
+            <input matInput [formControlName]="'uf'">
+            <mat-error *ngIf="isFieldInvalid(field) && field.hasError('required')"> is required</mat-error>
+        </mat-form-field>
+        <mat-form-field
+            *ngIf="estado as field"
+            fxFlex="20"
+            fxFlex.xs="100"
+        >
+            <mat-label>Estado</mat-label>
+            <input matInput [formControlName]="'estado'">
+            <mat-error *ngIf="isFieldInvalid(field) && field.hasError('required')"> is required</mat-error>
+        </mat-form-field>
+        <mat-form-field
+            *ngIf="regiao as field"
+            fxFlex="20"
+            fxFlex.xs="100"
+        >
+            <mat-label>Região</mat-label>
+            <input matInput [formControlName]="'regiao'">
+            <mat-error *ngIf="isFieldInvalid(field) && field.hasError('required')"> is required</mat-error>
+        </mat-form-field>
+        <mat-form-field
+            *ngIf="ddd as field"
+            fxFlex="20"
+            fxFlex.xs="100"
+        >
+            <mat-label>DDD</mat-label>
+            <input matInput [formControlName]="'ddd'">
+            <mat-error *ngIf="isFieldInvalid(field) && field.hasError('required')"> is required</mat-error>
+        </mat-form-field>
+        <mat-form-field
+            *ngIf="unidade as field"
+            fxFlex="20"
+            fxFlex.xs="100"
+        >
+            <mat-label>Unidade</mat-label>
+            <input matInput [formControlName]="'unidade'">
+            <mat-error *ngIf="isFieldInvalid(field) && field.hasError('required')"> is required</mat-error>
+        </mat-form-field>
+        <mat-form-field *ngIf="ibge as field"
+            fxFlex="20"
+            fxFlex.xs="100"
+        >
+            <mat-label>Ibge</mat-label>
+            <input matInput [formControlName]="'ibge'">
+            <mat-error *ngIf="isFieldInvalid(field) && field.hasError('required')"> is required</mat-error>
+        </mat-form-field>
+        <mat-form-field
+            *ngIf="gia as field"
+            fxFlex="20"
+            fxFlex.xs="100"
+        >
+            <mat-label>Gia</mat-label>
+            <input matInput [formControlName]="'gia'">
+            <mat-error *ngIf="isFieldInvalid(field) && field.hasError('required')"> is required</mat-error>
+        </mat-form-field>
+        <mat-form-field
+            *ngIf="siafi as field"
+            fxFlex="20"
+            fxFlex.xs="100"
+        >
+            <mat-label>Siafi</mat-label>
+            <input matInput [formControlName]="'siafi'">
+            <mat-error *ngIf="isFieldInvalid(field) && field.hasError('required')"> is required</mat-error>
+        </mat-form-field>
+    </div>
+    
+    <div fxLayout fxLayoutGap="15px">
+        <button 
+            type="submit"
+            mat-raised-button
+            color="warn"
+            [disabled]="f.invalid || cep.pending || spinner?.store === true"
+        >
+            Salvar
+            <mat-icon *ngIf="cep.pending === true || spinner?.store === true">
+                <mat-spinner diameter="18"></mat-spinner>
+            </mat-icon> 
+        </button>
+    </div>
+</form>

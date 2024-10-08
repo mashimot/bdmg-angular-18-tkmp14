@@ -1,0 +1,17 @@
+<section style="margin-top: 30px;">
+    <button 
+        mat-raised-button
+        (click)="clearTable()"
+    >Limpar Tabela</button>
+    <app-cep-list
+        [ceps]="ceps"
+        [spinner]="spinner"
+    ></app-cep-list>
+</section>
+
+<section style="margin-top: 30px; padding-bottom: 40px;">
+    <app-cep-form
+        (createCepForm)="onCreateCepFormChange($event)"
+        [spinner]="spinner"
+    ></app-cep-form>
+</section>

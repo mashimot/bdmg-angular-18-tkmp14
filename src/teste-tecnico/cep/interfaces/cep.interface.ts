@@ -1,0 +1,21 @@
+export interface ICep {
+    cep: string;
+    logradouro: string;
+    complemento: string;
+    unidade: string;
+    bairro: string;
+    localidade: string;
+    uf: string;
+    estado: string;
+    regiao: string;
+    ibge: string;
+    gia: string;
+    ddd: string;
+    siafi: string;
+    erro?: string;
+}
+
+export interface ICepSpinner {
+    store?: boolean;
+    list?: boolean
+}

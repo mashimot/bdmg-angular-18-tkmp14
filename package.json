@@ -18,7 +18,9 @@
     "@angular/material-moment-adapter": "18.0.0",
     "rxjs": "^7.8.1",
     "tslib": "^2.5.0",
-    "zone.js": "~0.14.0"
+    "zone.js": "~0.14.0",
+    "ngx-mask": "^18.0.0",
+    "@ngbracket/ngx-layout": "^18.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.0.0",
