@@ -43,7 +43,7 @@ import { ICep, ICepSpinner } from '../../interfaces/cep.interface';
         MatIconModule,
         FlexLayoutModule,
         NgxMaskDirective,
-        NgxMaskPipe,
+        NgxMaskPipe
     ]
 })
 export class CepFormComponent implements OnInit {
@@ -81,7 +81,6 @@ export class CepFormComponent implements OnInit {
         this.formSubmitAttempt = true;
         if (this.f.valid) {
             this.createCepForm.emit(this.f.value);
-            console.log('form submitted');
         } else {
             this.validateAllFormFields(this.f);
         }

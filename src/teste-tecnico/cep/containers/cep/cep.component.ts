@@ -46,7 +46,9 @@ export class CepComponent {
   public onCreateCepFormChange(cep: ICep): void {
     this.spinner.store = true;
 
-    this.cepService.store(cep)
+    this.cepService.updateOrStore(cep.cep, cep)
+    // this.cepService.store(cep)
+
       .pipe(
         switchMap(response => {
           this.spinner.list = true;

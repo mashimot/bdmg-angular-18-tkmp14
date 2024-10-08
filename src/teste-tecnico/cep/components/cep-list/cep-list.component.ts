@@ -31,7 +31,7 @@ export class CepListComponent {
   @Input() ceps?: ICep[];
   @Input() spinner?: ICepSpinner;
 
-  public displayedColumns: string[] = ['cep', 'logradouro', 'bairro'];
+  public displayedColumns: string[] = ['cep', 'logradouro', 'bairro', 'uf'];
   public dataSource : MatTableDataSource<ICep> = new MatTableDataSource<ICep>(this.ceps || []);
 
   ngOnChanges(changes: SimpleChanges) {

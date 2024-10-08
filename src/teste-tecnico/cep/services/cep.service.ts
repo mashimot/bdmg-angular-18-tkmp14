@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { delay, map, Observable, of } from 'rxjs';
+import { delay, map, Observable, of, tap } from 'rxjs';
 import { ICep } from '../interfaces/cep.interface';
 
 @Injectable({
@@ -25,6 +25,23 @@ export class CepService {
 				return true;
 			}),
 			delay(1000)
+		);
+	}
+
+	public updateOrStore(cepNumber: string, cep: ICep): Observable<boolean> {
+		return this.getCeps().pipe(
+			map(ceps => {
+				const cepIndex = ceps.findIndex(existingCep => existingCep.cep === cepNumber);
+
+				if (cepIndex !== -1) {
+					ceps[cepIndex] = cep;
+				} else {
+					ceps.push(cep);
+				}
+
+				this.saveCeps(ceps);
+				return true;
+			})
 		);
 	}
 
